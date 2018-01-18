@@ -1,12 +1,12 @@
 from os import listdir
 
 
-def parse_package(tool:str, path:str) -> dict:
+def parse_package(tool: str, path: str) -> dict:
     files = listdir(path)
     return {
         'monpoly': {
             'formula':  path + '/' + [e for e in files if e.endswith(".formula")][0],
-            'signaure': path + '/' + [e for e in files if e.endswith(".sign")][0],
+            'signature': path + '/' + [e for e in files if e.endswith(".sign")][0],
             'log':      path + '/' + [e for e in files if e.endswith(".log")][0],
         },
         'stream': {

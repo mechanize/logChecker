@@ -2,7 +2,7 @@ from shutil import move
 from os import remove
 
 
-def stream_set_src(src: str, params: [str]):
+def stream_set_src(src: str, params: [str]) -> None:
     src_temp = '/'.join(src.split('/')[:-1] + ["temp.dat"])  # creates a tmp file at the same location as src
     f_src = open(src, 'w')
     f_temp = open(src_temp, 'w+')
@@ -17,6 +17,15 @@ def stream_set_src(src: str, params: [str]):
     f_src.close()
     remove(src)
     move(src_temp, src)
+
+
+def stream_get_dest(src: str) -> str:
+    f_src = open(src, 'r')
+    dest = ""
+    for line in f_src.readlines():
+        if line.startswith("dest:"):
+            dest = line.split("dest:")[-1].strip()
+        return dest
 
 
 

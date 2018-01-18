@@ -3,9 +3,10 @@
 # logChecker.py -m monpoly.sign monpoly.formula monpoly.log -s stream.script \streamlogs
 
 
-def get_param(inp: str) -> dict:
+def get_param(inp: [str]) -> dict:
     param = {}
-    stdin = [("-" + e).strip().split(" ") for e in inp.strip().split("-")[1:]]
+    stdin = [("-" + e).split(" ") for e in (" ".join(inp)).strip().split("-")]
+
     for t in stdin:
         param.update({
             '-m': {
